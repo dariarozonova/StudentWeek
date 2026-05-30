@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="lv" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viena nedēļa Datorzinātņu studenta dzīvē</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f2efe9;
+        --cards: #e8e4dc;
+        --ramis: #d9d4c9;
+        --virsraksti: #2e2b26;
+        --pamatteksts: #7a6f62;
+        --accent1: #b09070;
+        --accent2: #8a9faa;
+        --accent3: #8fa88a;
+        --white: #fdfcf9;
+        --border: #c8c2b6;
+        --pill-bg: #e0d8cc;
+      }
+
+      [data-theme="dark"] {
+        --bg: #1a1916;
+        --cards: #252320;
+        --ramis: #2e2b27;
+        --virsraksti: #e8e3da;
+        --pamatteksts: #9a9186;
+        --accent1: #b09070;
+        --accent2: #8a9faa;
+        --accent3: #8fa88a;
+        --white: #1f1d1a;
+        --border: #3a3730;
+        --pill-bg: #33302c;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--virsraksti);
+        transition:
+          background 0.35s ease,
+          color 0.35s ease;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .hero,
+      .hero-main,
+      .hero-sidebar,
+      .hero-image,
+      .hero-image-grid,
+      .gallery-grid,
+      .gallery-box {
+        min-width: 0;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 0 32px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition:
+          background 0.35s ease,
+          border-color 0.35s ease;
+      }
+
+      .logo {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--virsraksti);
+      }
+
+      .nav {
+        display: flex;
+        gap: 32px;
+        align-items: center;
+      }
+
+      .nav a {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--pamatteksts);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition: color 0.2s;
+      }
+
+      .nav a:hover {
+        color: var(--accent1);
+      }
+
+      .theme-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--pill-bg);
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--virsraksti);
+        font-family: "Inter", sans-serif;
+        transition: all 0.2s;
+      }
+
+      .theme-btn:hover {
+        background: var(--ramis);
+      }
+
+      .theme-btn .icon {
+        font-size: 16px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        min-height: calc(100vh - 64px);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .hero-sidebar {
+        border-right: 1px solid var(--border);
+        padding: 56px 36px;
+        background: var(--white);
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        position: sticky;
+        top: 64px;
+        height: calc(100vh - 64px);
+        transition: background 0.35s ease;
+      }
+
+      .hero-sidebar h1 {
+        font-size: 42px;
+        line-height: 1.1;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--virsraksti);
+      }
+
+      .hero-sidebar p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--pamatteksts);
+      }
+
+      .sidebar-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: auto;
+      }
+
+      .side-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 16px;
+        border: 1px solid var(--border);
+        background: var(--bg);
+        color: var(--virsraksti);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 4px;
+        transition: all 0.2s;
+      }
+
+      .side-link:hover {
+        background: var(--accent1);
+        color: #fff;
+        border-color: var(--accent1);
+      }
+
+      .side-link .mdi {
+        font-size: 18px;
+      }
+
+      .hero-main {
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .hero-image {
+        flex: 1;
+        background: var(--cards);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        min-height: 380px;
+        max-height: 620px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-image-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        gap: 3px;
+      }
+
+      .hero-bottom {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 20px;
+      }
+
+      .statement {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 28px;
+        transition: background 0.35s ease;
+      }
+
+      .statement h2 {
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
+      }
+
+      .statement p {
+        font-size: 14px;
+        line-height: 1.75;
+        color: var(--pamatteksts);
+      }
+
+      .mini-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 28px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: background 0.35s ease;
+      }
+
+      .mini-card-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: var(--accent3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: #fff;
+        flex-shrink: 0;
+      }
+
+      .mini-card p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--pamatteksts);
+      }
+
+      .section-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--accent1);
+        margin-bottom: 8px;
+      }
+
+      .days-section {
+        padding: 56px 40px;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .section-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 32px;
+        gap: 16px;
+      }
+
+      .section-top h2 {
+        font-size: 38px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .section-top span {
+        font-size: 14px;
+        color: var(--pamatteksts);
+      }
+
+      .days-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+      }
+
+      .day-block {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+
+      .day-block:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        border-color: var(--accent1);
+      }
+
+      .day-pill {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        background: var(--pill-bg);
+        color: var(--pamatteksts);
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 100px;
+      }
+
+      .day-icon {
+        height: 80px;
+        background: var(--cards);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        transition: background 0.35s ease;
+      }
+
+      .day-block h3 {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      .day-block p {
+        font-size: 13px;
+        line-height: 1.65;
+        color: var(--pamatteksts);
+      }
+
+      .split-section {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .left-stack {
+        border-right: 1px solid var(--border);
+        padding: 48px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .left-stack h2 {
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        margin-bottom: 4px;
+      }
+
+      .strip-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 24px;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        transition: all 0.2s;
+      }
+
+      .strip-card:hover {
+        border-color: var(--accent2);
+      }
+
+      .strip-card-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        flex-shrink: 0;
+      }
+
+      .icon-accent1 {
+        background: rgba(176, 144, 112, 0.15);
+        color: var(--accent1);
+      }
+
+      .icon-accent2 {
+        background: rgba(138, 159, 170, 0.15);
+        color: var(--accent2);
+      }
+
+      .icon-accent3 {
+        background: rgba(143, 168, 138, 0.15);
+        color: var(--accent3);
+      }
+
+      .strip-card-text h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .strip-card-text p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--pamatteksts);
+      }
+
+      .right-stack {
+        padding: 48px 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .feature-image {
+        background: var(--cards);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 48px;
+        transition: background 0.35s ease;
+      }
+
+      .feature-text {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 28px;
+        transition: background 0.35s ease;
+      }
+
+      .feature-text h2 {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin-bottom: 14px;
+      }
+
+      .feature-text p {
+        font-size: 14px;
+        line-height: 1.75;
+        color: var(--pamatteksts);
+        margin-bottom: 10px;
+      }
+
+      .duo-boxes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .small-panel {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 22px;
+        transition: all 0.2s;
+      }
+
+      .small-panel:hover {
+        border-color: var(--accent3);
+      }
+
+      .small-panel .panel-icon {
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+
+      .small-panel h3 {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .small-panel p {
+        font-size: 13px;
+        line-height: 1.65;
+        color: var(--pamatteksts);
+      }
+
+      .gallery-section {
+        padding: 56px 40px;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 150px 150px;
+        gap: 16px;
+        margin-top: 32px;
+        max-height: 520px;
+      }
+
+      .gallery-box {
+        background: var(--cards);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: var(--pamatteksts);
+        transition: all 0.25s;
+        cursor: pointer;
+        overflow: hidden;
+        max-height: 100%;
+      }
+
+      .gallery-box img {
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .gallery-box:hover {
+        transform: scale(1.02);
+        border-color: var(--accent2);
+      }
+
+      .gallery-box.large {
+        grid-row: span 2;
+        font-size: 48px;
+      }
+
+      .icons-section {
+        padding: 56px 40px;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        transition: background 0.35s ease;
+      }
+
+      .balance-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 32px;
+      }
+
+      .balance-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 28px;
+        transition: all 0.2s;
+      }
+
+      .balance-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent1);
+      }
+
+      .balance-icon {
+        font-size: 30px;
+        margin-bottom: 18px;
+      }
+
+      .balance-card h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .balance-card p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--pamatteksts);
+        margin-bottom: 16px;
+      }
+
+      .balance-card ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .balance-card ul li {
+        font-size: 13px;
+        color: var(--pamatteksts);
+        padding: 8px 10px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+      }
+
+      footer {
+        background: var(--white);
+        border-top: 1px solid var(--border);
+        padding: 48px 40px;
+        display: grid;
+        grid-template-columns: 1.4fr 0.8fr 1fr;
+        gap: 32px;
+        transition: background 0.35s ease;
+      }
+
+      .footer-box h3 {
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin-bottom: 16px;
+        color: var(--virsraksti);
+      }
+
+      .footer-box p {
+        font-size: 14px;
+        line-height: 1.7;
+        color: var(--pamatteksts);
+        margin-bottom: 6px;
+      }
+
+      .footer-box ul {
+        list-style: none;
+      }
+
+      .footer-box ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-box a {
+        font-size: 14px;
+        color: var(--pamatteksts);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 0.2s;
+      }
+
+      .footer-box a:hover {
+        color: var(--accent1);
+      }
+
+      .footer-box a .mdi {
+        font-size: 16px;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid var(--border);
+        padding: 20px 40px;
+        background: var(--white);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.35s ease;
+      }
+
+      .footer-bottom p {
+        font-size: 13px;
+        color: var(--pamatteksts);
+      }
+
+      .student-badge {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--pill-bg);
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        padding: 8px 16px;
+      }
+
+      .student-badge .mdi {
+        font-size: 16px;
+        color: var(--accent3);
+      }
+
+      .student-badge span {
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .accent-bar {
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--accent1) 0%,
+          var(--accent2) 50%,
+          var(--accent3) 100%
+        );
+      }
+
+      @media (max-width: 1100px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-sidebar {
+          position: static;
+          height: auto;
+        }
+
+        .days-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .split-section {
+          grid-template-columns: 1fr;
+        }
+
+        .left-stack {
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+        }
+
+        .balance-grid {
+          grid-template-columns: 1fr;
+        }
+
+        footer {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .days-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+        }
+
+        .gallery-box.large {
+          grid-row: auto;
+        }
+
+        footer {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-bottom {
+          grid-template-columns: 1fr;
+        }
+
+        .duo-boxes {
+          grid-template-columns: 1fr;
+        }
+
+        .nav {
+          display: none;
+        }
+
+        .section-top {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="accent-bar"></div>
+
+    <header class="topbar">
+      <div class="logo">DR23041</div>
+
+      <nav class="nav">
+        <a href="#nedela">Nedēļa</a>
+        <a href="#studijas">Studijas</a>
+        <a href="#galerija">Galerija</a>
+        <a href="#kontakti">Kontakti</a>
+      </nav>
+
+      <button class="theme-btn" onclick="toggleTheme()">
+        <span class="mdi mdi-theme-light-dark icon"></span>
+        <span id="theme-label">Gaišs / Tumšs</span>
+      </button>
+    </header>
+
+    <section class="hero">
+      <aside class="hero-sidebar">
+        <div>
+          <div class="section-label">Datorika · LU</div>
+          <h1>Viena nedēļa Datorzinātņu studenta dzīvē</h1>
+        </div>
+        <p>
+          Studenta ikdiena - lekcijas, programmēšana, grupu projekti, pašmācība
+          un brīvais laiks. Viss vienā skatā.
+        </p>
+        <div class="sidebar-links">
+          <a href="#nedela" class="side-link">
+            <span class="mdi mdi-calendar-week"></span>
+            Skatīt nedēļas ritmu
+          </a>
+          <a href="#galerija" class="side-link">
+            <span class="mdi mdi-image-multiple"></span>
+            Atvērt galeriju
+          </a>
+          <a href="#studijas" class="side-link">
+            <span class="mdi mdi-book-open-page-variant"></span>
+            Lasīt par studijām
+          </a>
+        </div>
+      </aside>
+
+      <div class="hero-main">
+        <div class="hero-image">
+          <div class="hero-image-grid">
+            <div class="gallery-box large">
+              <img src="assets/IMG_3125.jpg" alt="Skats no loga" />
+            </div>
+            <div class="gallery-box">
+              <img src="assets/IMG_3713.jpg" alt="Universitātes sturītis" />
+            </div>
+            <div class="gallery-box">
+              <img src="assets/IMG_3712.jpg" alt="Universitātes gaitenis" />
+            </div>
+            <div class="gallery-box">
+              <img src="assets/IMG_3412.jpg" alt="Algoritmu lekcijas viela" />
+            </div>
+            <div class="gallery-box">
+              <img src="assets/IMG_3718.jpg" alt="Humanitāras fakultātes skats" />
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="statement">
+            <h2>Mana ikdiena vienā skatā</h2>
+            <p>
+              Šajā sadaļā ir pārskatāma mana mācību nedēļa, kas apvienota ar
+              pārvietošanos starp LU korpusiem Rīgā un darba grafiku. Tas ir
+              skats uz dinamisku ikdienu, kur studijas jāsavieno ar darbu un
+              ikdienas tempu.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <div class="mini-card-icon">
+              <span class="mdi mdi-school"></span>
+            </div>
+            <p>
+              Datorzinātņu studijas LU - zināšanas, ko var izmantot jau studiju
+              laikā un ārpus tām.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="days-section" id="nedela">
+      <div class="section-top">
+        <div>
+          <div class="section-label">Nedēļas apraksts</div>
+          <h2>5 dienas, 5 ritmi</h2>
+        </div>
+        <span>Nedēļa starp studijām, darbu un ikdienas lietām</span>
+      </div>
+
+      <div class="days-grid">
+        <article class="day-block">
+          <span class="day-pill">01</span>
+          <div class="day-icon">
+            <span class="mdi mdi-flask" style="color: var(--accent1)"></span>
+          </div>
+          <h3>Pirmdiena</h3>
+          <p>
+            Dabaszinātnes un Oracle laboratorijas vai mācības, pēc tam darbs.
+            Nedēļa sākas diezgan intensīvi.
+          </p>
+        </article>
+
+        <article class="day-block">
+          <span class="day-pill">02</span>
+          <div class="day-icon">
+            <span class="mdi mdi-code-tags" style="color: var(--accent2)"></span>
+          </div>
+          <h3>Otrdiena</h3>
+          <p>
+            Algoritmu teorija, materiāla atkārtošana un darbs. Šī diena vairāk
+            saistīta ar saprašanu un praksi.
+          </p>
+        </article>
+
+        <article class="day-block">
+          <span class="day-pill">03</span>
+          <div class="day-icon">
+            <span class="mdi mdi-translate" style="color: var(--accent3)"></span>
+          </div>
+          <h3>Trešdiena</h3>
+          <p>
+            Spāņu valoda Humanitāro zinātņu fakultātē un pēc tam darbs. Citāda
+            diena, kas izsit no tehniskā ritma.
+          </p>
+        </article>
+
+        <article class="day-block">
+          <span class="day-pill">04</span>
+          <div class="day-icon">
+            <span class="mdi mdi-laptop" style="color: var(--accent1)"></span>
+          </div>
+          <h3>Ceturtdiena</h3>
+          <p>
+            OOP tiešsaistes lekcijas un darbs. Diena paiet starp lekcijām,
+            uzdevumiem un ikdienas pienākumiem.
+          </p>
+        </article>
+
+        <article class="day-block">
+          <span class="day-pill">05</span>
+          <div class="day-icon">
+            <span class="mdi mdi-briefcase" style="color: var(--accent2)"></span>
+          </div>
+          <h3>Piektdiena</h3>
+          <p>
+            Mācībās brīvdiena, bet ir darbs. Parasti tā ir mierīgāka diena bez
+            lekcijām, taču ne pilnīgi brīva.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="split-section" id="studijas">
+      <div class="left-stack">
+        <div>
+          <div class="section-label">Studiju vide</div>
+          <h2>Kā izskatās mana studiju nedēļa?</h2>
+        </div>
+
+        <div class="strip-card">
+          <div class="strip-card-icon icon-accent1">
+            <span class="mdi mdi-school"></span>
+          </div>
+          <div class="strip-card-text">
+            <h3>Lekcijas un laboratorijas</h3>
+            <p>
+              Nedēļā ir gan parastās lekcijas, gan praktiskie darbi. Dažās
+              dienās vairāk jāklausās un jāiedziļinās teorijā, citās vairāk
+              jāstrādā pašai.
+            </p>
+          </div>
+        </div>
+
+        <div class="strip-card">
+          <div class="strip-card-icon icon-accent2">
+            <span class="mdi mdi-account-group"></span>
+          </div>
+          <div class="strip-card-text">
+            <h3>Projekti ar kursabiedriem</h3>
+            <p>
+              Daļa mācību notiek arī caur kopīgiem darbiem. Ar kursabiedriem
+              sanāk apspriest idejas, sadalīt uzdevumus un kopā veidot studiju
+              projektus.
+            </p>
+          </div>
+        </div>
+
+        <div class="strip-card">
+          <div class="strip-card-icon icon-accent3">
+            <span class="mdi mdi-code-braces"></span>
+          </div>
+          <div class="strip-card-text">
+            <h3>Personīgie un mācību projekti</h3>
+            <p>
+              Bez obligātajiem uzdevumiem ir arī vieta saviem mazajiem
+              projektiem. Tie palīdz labāk saprast tēmas un pamazām krāt
+              pieredzi ārpus lekcijām.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-stack">
+<div class="feature-image">
+  <img src="assets/Calendar.png" alt="Kalendārs" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+</div>
+
+        <div class="feature-text">
+          <div class="section-label">Nedēļas ritms</div>
+          <h2>Ko iegūstu studiju laikā?</h2>
+          <p>
+            Studijām parasti veltu apmēram 10–15 stundas nedēļā. Šis laiks
+            ietver lekcijas, laboratorijas darbus, patstāvīgu gatavošanos un
+            darbu pie mājasdarbiem.
+          </p>
+          <p>
+            Šobrīd OOP kursā apgūstam Java un grupā veidojam kopīgu projektu.
+            Paralēli jau ir izstrādāti darbi Oracle Rīki un OOP priekšmetos,
+            kas ļāva iegūt pirmo praktisko pieredzi.
+          </p>
+        </div>
+
+        <div class="duo-boxes">
+          <div class="small-panel">
+            <div class="panel-icon" style="color: var(--accent1)">
+              <span class="mdi mdi-book-clock"></span>
+            </div>
+            <h3>Praktiskā pieredze</h3>
+            <p>
+              Lielāko daļu zināšanu nostiprinu praktiski. Laboratorijas darbi,
+              Oracle Rīki un OOP projekti palīdz saprast, kā teorija tiek
+              izmantota reālos uzdevumos.
+            </p>
+          </div>
+
+          <div class="small-panel">
+            <div class="panel-icon" style="color: var(--accent3)">
+              <span class="mdi mdi-briefcase-clock"></span>
+            </div>
+            <h3>Mīļākais priekšmets</h3>
+            <p>
+              Lai gan studēju datorzinātnes, visvairāk man patīk spāņu valoda.
+              Humanitāro zinātņu fakultātes nodarbības dod iespēju attīstīt arī
+              prasmes ārpus tehniskās jomas.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+     <section class="icons-section">
+      <div class="section-top">
+        <div>
+          <div class="section-label">Pieredze un intereses</div>
+          <h2>Kas raksturo manu studiju ceļu?</h2>
+        </div>
+        <span>Prasmes, projekti un interesantākie atklājumi</span>
+      </div>
+
+      <div class="balance-grid">
+        <div class="balance-card">
+          <div class="balance-icon" style="color: var(--accent1)">
+            <span class="mdi mdi-school"></span>
+          </div>
+          <h3>Studiju pieredze</h3>
+          <p>
+            Apmēram 10–15 stundas nedēļā veltu studijām. Regulāras lekcijas,
+            laboratorijas un patstāvīgais darbs palīdz pakāpeniski attīstīt
+            profesionālās prasmes.
+          </p>
+          <ul>
+            <li>Oracle Rīki</li>
+            <li>OOP projekti</li>
+            <li>Algoritmu teorija</li>
+          </ul>
+        </div>
+
+        <div class="balance-card">
+          <div class="balance-icon" style="color: var(--accent2)">
+            <span class="mdi mdi-briefcase"></span>
+          </div>
+          <h3>Projekti</h3>
+          <p>
+            Studiju laikā izveidoti darbi Oracle Rīki un OOP kursos.
+            Projekti palīdz ne tikai izpildīt prasības, bet arī veidot
+            praktisku izpratni par programmēšanu.
+          </p>
+          <ul>
+            <li>Grupu sadarbība</li>
+            <li>Programmēšanas uzdevumi</li>
+            <li>Praktiskā pieredze</li>
+          </ul>
+        </div>
+
+        <div class="balance-card">
+          <div class="balance-icon" style="color: var(--accent3)">
+            <span class="mdi mdi-code-braces"></span>
+          </div>
+          <h3>Spāņu valoda</h3>
+          <p>
+            Interesantākā pieredze šajā semestrī man bija spāņu valodas
+            apguve Humanitāro zinātņu fakultātē. Tā deva iespēju paskatīties uz
+            studijām no cita skatpunkta.
+          </p>
+          <ul>
+            <li>Spāņu valoda</li>
+            <li>Humanitārās zinātnes</li>
+            <li>Jauna pieredze</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section" id="galerija">
+      <div class="section-top">
+        <div>
+          <div class="section-label">Galerija</div>
+          <h2>Momenti no studenta dzīves</h2>
+        </div>
+        <span>Projekti, ikdiena un universitāte</span>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-box large">
+          <img src="assets/IMG_8961.jpg" alt="Darbs pie projekta" />
+        </div>
+        <div class="gallery-box">
+          <img src="assets/IMG_3713.jpg" alt="Humanitāras fakultātes sturītis" />
+        </div>
+        <div class="gallery-box">
+          <img src="assets/IMG_3125.jpg" alt="Loga skats" />
+        </div>
+        <div class="gallery-box">
+          <img src="assets/IMG_3323.jpg" alt="Spaņu valodas lekcijas viela" />
+        </div>
+        <div class="gallery-box">
+          <img src="assets/IMG_3703.jpg" alt="Darbs pie Java projekta" />
+        </div>
+      </div>
+    </section>
+
+    <footer id="kontakti">
+      <div class="footer-box">
+        <h3>Par vietni</h3>
+        <p>
+          Tīmekļa vietne par datorzinātņu studenta nedēļu - studiju
+          procesi, praktiskie darbi un studentu dzīves elementi vienā lapā.
+        </p>
+      </div>
+
+      <div class="footer-box">
+        <h3>Navigācija</h3>
+        <ul>
+          <li>
+            <a href="#"><span class="mdi mdi-home-outline"></span>Sākums</a>
+          </li>
+          <li>
+            <a href="#nedela"><span class="mdi mdi-calendar-week"></span>Nedēļa</a>
+          </li>
+          <li>
+            <a href="#galerija"><span class="mdi mdi-image-multiple"></span>Galerija</a>
+          </li>
+          <li>
+            <a href="#kontakti"><span class="mdi mdi-email-outline"></span>Kontakti</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-box">
+        <h3>Students</h3>
+        <p>Vārds: Darja</p>
+        <p>Uzvārds: Rozonova</p>
+        <p>Universitāte: LU</p>
+      </div>
+    </footer>
+
+    <div class="footer-bottom">
+      <p>© 2025 Darja Rozonova · DR23041 · Datorzinātņu nodaļa · LU</p>
+      <div class="student-badge">
+        <span class="mdi mdi-school"></span>
+        <span>Studentu nedēļa</span>
+      </div>
+    </div>
+
+    <script>
+      function toggleTheme() {
+        const html = document.documentElement;
+        const current = html.getAttribute("data-theme");
+        html.setAttribute("data-theme", current === "light" ? "dark" : "light");
+      }
+    </script>
+  </body>
+</html>
